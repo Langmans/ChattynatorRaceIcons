@@ -1,10 +1,11 @@
 ## Interface: 120000, 120001
 ## Title: Chattynator Race Icons
+## Version: @project-version@
 ## Notes: Adds race icons to messages from players in Chattynator.
-## Version: 1.0
 ## RequiredDeps: Chattynator
 ## OptionalDeps: _DebugLog, ElvUI_EltreumUI
 ## Author: Langmans
+## IconTexture: Interface\AddOns\Chattynator\RaceIcons\logo.png
 
 
 ChattynatorRaceIcons.lua
