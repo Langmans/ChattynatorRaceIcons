@@ -5,7 +5,6 @@
 ## RequiredDeps: Chattynator
 ## OptionalDeps: _DebugLog, ElvUI_EltreumUI
 ## Author: Langmans
-## IconTexture: Interface\AddOns\Chattynator\RaceIcons\logo.png
 
 
 ChattynatorRaceIcons.lua
