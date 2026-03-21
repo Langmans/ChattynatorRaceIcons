@@ -51,7 +51,7 @@ Chattynator.API.AddModifier(function(data)
 		local player = data.typeInfo.player
 		local race, sex = player.race, player.sex
 
-		-- if undefined sex then female is assumed
+		-- if undefined sex or neuter then female is assumed
 		if not sex or sex == 1 then
 			sex = 3
 		end
@@ -60,7 +60,7 @@ Chattynator.API.AddModifier(function(data)
 			and eltreumRaceIcons[race .. sex]
 			or atlasMarkup[(isRetail and "raceicon128-%s-%s" or "raceicon-%s-%s"):format(
 				lower(raceReplacements[race] or race),
-				sex == 2 and "female" or "male"
+				sex == 3 and "female" or "male"
 			)]
 
 		--[[
