@@ -1,5 +1,6 @@
 ## Interface: 120000, 120001
 ## Title: Chattynator Race Icons
+## Category: Chat
 ## Version: @project-version@
 ## Notes: Adds race icons to messages from players in Chattynator.
 ## RequiredDeps: Chattynator
