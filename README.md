@@ -1,5 +1,8 @@
 # ChattynatorRaceIcons
 
+[![Release](https://img.shields.io/github/v/release/Langmans/ChattynatorRaceIcons?include_prereleases&sort=semver)](https://github.com/Langmans/ChattynatorRaceIcons/releases)
+[![Game Version](https://img.shields.io/badge/WoW-12.0.0-blue.svg)](https://worldofwarcraft.com)
+
 **ChattynatorRaceIcons** is a lightweight utility for the **Chattynator** addon that adds a visual flourish to your chat logs. It automatically identifies the race and sex of players in your chat and prepends a high-quality race icon directly before their name.
 
 ***
