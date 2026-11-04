@@ -43,17 +43,7 @@ local raceReplacements = {
 	ZandalariTroll = "Zandalari",
 }
 
----A chat text for the log: "|" doubled, so markup shows as text instead of drawing.
----@param text string
----@return string
-local function Visible(text)
-	return (gsub(text, "|", "||"))
-end
-
 Chattynator.API.AddModifier(function(data)
-	local seen = data.typeInfo.player
-	Debug("line: player=%s race=%s sex=%s", tostring(seen and seen.name), tostring(seen and seen.race),
-		tostring(seen and seen.sex))
 	if data.typeInfo.player and data.typeInfo.player.race then
 		local player = data.typeInfo.player
 		local race, sex = player.race, player.sex
@@ -73,8 +63,6 @@ Chattynator.API.AddModifier(function(data)
 
 		-- The icon goes just before the player link, not inside it: Eltruism's race texture, a file
 		-- path, did not draw inside the link's text (after another icon there), while it did outside.
-		local count
-		data.text, count = gsub(data.text, "|Hplayer:", icon .. "%0", 1)
-		Debug("inserted %d: %s", count, Visible(data.text))
+		data.text = gsub(data.text, "|Hplayer:", icon .. "%0", 1)
 	end
 end)
