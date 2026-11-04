@@ -71,13 +71,10 @@ Chattynator.API.AddModifier(function(data)
 				sex == 3 and "female" or "male"
 			)]
 
-		--[[
-		(|Hplayer:[^|]+|h) matches the player link up to |h.
-		(%[?) matches an optional [.
-		The replacement %1%2 preserves both parts, then adds the icon markup after, regardless of whether [ is present.
-		--]]
+		-- The icon goes just before the player link, not inside it: Eltruism's race texture, a file
+		-- path, did not draw inside the link's text (after another icon there), while it did outside.
 		local count
-		data.text, count = gsub(data.text, "(|Hplayer:[^|]+|h)(%[?)", "%1%2" .. icon)
+		data.text, count = gsub(data.text, "|Hplayer:", icon .. "%0", 1)
 		Debug("inserted %d: %s", count, Visible(data.text))
 	end
 end)
