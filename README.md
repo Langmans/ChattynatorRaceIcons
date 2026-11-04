@@ -37,5 +37,3 @@ The addon monitors incoming Chattynator messages. When player data is available,
 ***
 
 > **Note:** For the best experience, ensure your Chattynator is up to date to allow proper API access for the race data modifier.
-
-> **Note 2:** No AI was used while programming this addon. Just above description was generated.
