@@ -8,7 +8,6 @@ local CreateSimpleTextureMarkup = CreateSimpleTextureMarkup
 --local setmetatable = setmetatable
 
 local isRetail = WOW_PROJECT_ID == WOW_PROJECT_MAINLINE
-local ElvUI_EltreumUI = ElvUI_EltreumUI
 local DLAPI = DLAPI
 
 ---@type function(any, ...): void
@@ -26,11 +25,12 @@ local atlasMarkup = setmetatable({}, {
 		return self[key]
 	end
 })
+-- Eltruism's race icons, its Retail set on every client: it has every race the Classic set has,
+-- in a newer style. Keyed by race file and sex ("NightElf3").
 local eltreumRaceIcons = setmetatable({}, {
 	__index = function(self, key)
-		local markup = CreateSimpleTextureMarkup(format([[Interface\Addons\ElvUI_EltreumUI\Media\Textures\Races\%s\%s.tga]],
-				isRetail and 'Retail' or 'Classic', key
-		), 0, 0)
+		local markup = CreateSimpleTextureMarkup(
+			format([[Interface\Addons\ElvUI_EltreumUI\Media\Textures\Races\Retail\%s.tga]], key), 0, 0)
 		self[key] = markup
 		Debug('eltreumRaceIcons[%q] = %q', key, markup)
 		return self[key]
@@ -54,7 +54,8 @@ Chattynator.API.AddModifier(function(data)
 			sex = 3
 		end
 
-		local icon = ElvUI_EltreumUI
+		-- Looked up per line: Eltruism's global is there once it has loaded, whatever the load order.
+		local icon = rawget(_G, "ElvUI_EltreumUI")
 			and eltreumRaceIcons[race .. sex]
 			or atlasMarkup[(isRetail and "raceicon128-%s-%s" or "raceicon-%s-%s"):format(
 				lower(raceReplacements[race] or race),
