@@ -43,7 +43,17 @@ local raceReplacements = {
 	ZandalariTroll = "Zandalari",
 }
 
+---A chat text for the log: "|" doubled, so markup shows as text instead of drawing.
+---@param text string
+---@return string
+local function Visible(text)
+	return (gsub(text, "|", "||"))
+end
+
 Chattynator.API.AddModifier(function(data)
+	local seen = data.typeInfo.player
+	Debug("line: player=%s race=%s sex=%s", tostring(seen and seen.name), tostring(seen and seen.race),
+		tostring(seen and seen.sex))
 	if data.typeInfo.player and data.typeInfo.player.race then
 		local player = data.typeInfo.player
 		local race, sex = player.race, player.sex
@@ -66,8 +76,8 @@ Chattynator.API.AddModifier(function(data)
 		(%[?) matches an optional [.
 		The replacement %1%2 preserves both parts, then adds the icon markup after, regardless of whether [ is present.
 		--]]
-		data.text = gsub(data.text, "(|Hplayer:[^|]+|h)(%[?)", "%1%2" .. icon)
-
-		--Debug("race = %q, sex = %q, icon = %q", race, sex, icon)
+		local count
+		data.text, count = gsub(data.text, "(|Hplayer:[^|]+|h)(%[?)", "%1%2" .. icon)
+		Debug("inserted %d: %s", count, Visible(data.text))
 	end
 end)
