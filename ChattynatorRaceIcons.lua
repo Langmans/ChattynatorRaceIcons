@@ -19,7 +19,6 @@ local function Debug(...)
 end
 
 local atlasMarkup = setmetatable({}, {
-	__mode = "kv",
 	__index = function(self, key)
 		local markup = CreateAtlasMarkup(key)
 		self[key] = markup
@@ -28,7 +27,6 @@ local atlasMarkup = setmetatable({}, {
 	end
 })
 local eltreumRaceIcons = setmetatable({}, {
-	__mode = "kv",
 	__index = function(self, key)
 		local markup = CreateSimpleTextureMarkup(format([[Interface\Addons\ElvUI_EltreumUI\Media\Textures\Races\%s\%s.tga]],
 				isRetail and 'Retail' or 'Classic', key
