@@ -4,7 +4,6 @@ local lower = string.lower
 local format = string.format
 local gsub = string.gsub
 local CreateAtlasMarkup = CreateAtlasMarkup
-local CreateSimpleTextureMarkup = CreateSimpleTextureMarkup
 --local setmetatable = setmetatable
 
 local isRetail = WOW_PROJECT_ID == WOW_PROJECT_MAINLINE
@@ -26,11 +25,11 @@ local atlasMarkup = setmetatable({}, {
 	end
 })
 -- Eltruism's race icons, its Retail set on every client: it has every race the Classic set has,
--- in a newer style. Keyed by race file and sex ("NightElf3").
+-- in a newer style. Keyed by race file and sex ("NightElf3"). The markup is the one seen to draw in
+-- chat: no ".tga" and one size, 0 (the text's height); with ".tga:0:0:0:0" it stayed empty.
 local eltreumRaceIcons = setmetatable({}, {
 	__index = function(self, key)
-		local markup = CreateSimpleTextureMarkup(
-			format([[Interface\Addons\ElvUI_EltreumUI\Media\Textures\Races\Retail\%s.tga]], key), 0, 0)
+		local markup = format([[|TInterface\Addons\ElvUI_EltreumUI\Media\Textures\Races\Retail\%s:0|t]], key)
 		self[key] = markup
 		Debug('eltreumRaceIcons[%q] = %q', key, markup)
 		return self[key]
